@@ -84,6 +84,10 @@ func NewMysqld(config *MysqldConfig) (*TestMysqld, error) {
 		config.DataDir = filepath.Join(config.BaseDir, "var")
 	}
 
+	if config.MaxAllowedPacket == "" {
+		config.MaxAllowedPacket = "32M"
+	}
+
 	if !config.SkipNetworking {
 		if config.BindAddress == "" {
 			config.BindAddress = "127.0.0.1"
@@ -212,10 +216,7 @@ func (m *TestMysqld) Setup() error {
 	}
 	fmt.Fprintf(&buf, "socket=%s\n", config.Socket)
 	fmt.Fprintf(&buf, "tmpdir=%s\n", config.TmpDir)
-
-	if config.MaxAllowedPacket != "" {
-		buf.WriteString("max-allowed-packet=%s\n", config.MaxAllowedPacket)
-	}
+	fmt.Fprintf(&buf, "max-allowed-packet=%s\n", config.MaxAllowedPacket)
 
 	file, err := os.OpenFile(m.DefaultsFile, os.O_CREATE|os.O_WRONLY, 0755)
 	if err != nil {
