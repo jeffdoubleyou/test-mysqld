@@ -213,7 +213,7 @@ func (m *TestMysqld) Setup() error {
 	fmt.Fprintf(&buf, "socket=%s\n", config.Socket)
 	fmt.Fprintf(&buf, "tmpdir=%s\n", config.TmpDir)
 
-	if config.MaxAllowedPacket {
+	if config.MaxAllowedPacket != "" {
 		buf.WriteString("max-allowed-packet=%s\n", config.MaxAllowedPacket)
 	}
 
