@@ -216,7 +216,7 @@ func (m *TestMysqld) Setup() error {
 	}
 	fmt.Fprintf(&buf, "socket=%s\n", config.Socket)
 	fmt.Fprintf(&buf, "tmpdir=%s\n", config.TmpDir)
-	fmt.Fprintf(&buf, "max-allowed-packet=%s\n", config.MaxAllowedPacket)
+	fmt.Fprintf(&buf, "max_allowed_packet=%s\n", config.MaxAllowedPacket)
 
 	file, err := os.OpenFile(m.DefaultsFile, os.O_CREATE|os.O_WRONLY, 0755)
 	if err != nil {
