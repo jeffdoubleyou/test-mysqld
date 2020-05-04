@@ -11,15 +11,16 @@ type DatasourceOption interface {
 
 // MysqldConfig is used to configure the new mysql instance
 type MysqldConfig struct {
-	BaseDir        string
-	BindAddress    string
-	CopyDataFrom   string
-	DataDir        string
-	PidFile        string
-	Port           int
-	SkipNetworking bool
-	Socket         string
-	TmpDir         string
+	BaseDir          string
+	BindAddress      string
+	CopyDataFrom     string
+	DataDir          string
+	PidFile          string
+	Port             int
+	SkipNetworking   bool
+	Socket           string
+	TmpDir           string
+	MaxAllowedPacket string
 
 	AutoStart      int
 	MysqlInstallDb string
