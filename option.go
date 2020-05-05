@@ -62,3 +62,9 @@ func WithParseTime(t bool) DatasourceOption {
 func WithMultiStatements(t bool) DatasourceOption {
 	return &optionWithValue{name: "multiStatements", value: t}
 }
+
+// WithMaxAllowedPacket specifies whether the `MaxAllowedPacket` parameter
+// should be appended to the DSN - Note: 0 = read from server
+func WithMaxAllowedPacket(p int) DatasourceOption {
+	return &optionWithValue{name: "maxAllowedPacket", value: p}
+}

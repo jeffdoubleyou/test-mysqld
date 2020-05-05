@@ -460,6 +460,8 @@ func Datasource(options ...DatasourceOption) string {
 			q.Add(name, fmt.Sprintf("%t", o.Value().(bool)))
 		case "multiStatements":
 			q.Add(name, fmt.Sprintf("%t", o.Value().(bool)))
+		case "maxAllowedPacket":
+			q.Add(name, fmt.Sprintf("%d", o.Value().(int)))
 		}
 	}
 

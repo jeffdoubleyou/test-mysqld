@@ -79,3 +79,4 @@ Following is a list of possible parameters to `DSN`. I
 | mysqltest.WithDbname(string)         | Specifies the database name to connect                               | `"test"` |
 | mysqltest.WithParseTime(bool)        | Specifies if mysql driver should parse time values to `time.Time`    | `false` |
 | mysqltest.WithMultiStatements(bool)  | Specifies if mysql driver should allow multi statement in a SQL file | `false` |
+| mysqltest.WithMaxAllowedPacket(int)  | Specifies if mysql driver should set the maxAllowedPacket option (0=read from server)     | "" |

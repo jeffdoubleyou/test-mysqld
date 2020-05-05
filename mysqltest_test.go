@@ -17,11 +17,14 @@ func TestOptions(t *testing.T) {
 	if !assert.NoError(t, err, "NewMysqld should succeed") {
 		return
 	}
-	dsn := mysqld.Datasource("mysql", "root", "localhost", 0, WithParseTime(true), WithMultiStatements(true))
-	if !assert.Regexp(t, "parseTime=true", dsn, "dsn matches expected") {
+	dsn := mysqld.Datasource("mysql", "root", "localhost", 0, WithParseTime(true), WithMultiStatements(true), WithMaxAllowedPacket(0))
+	if !assert.Regexp(t, "parseTime=true", dsn, "dsn matches expected parseTime") {
 		return
 	}
-	if !assert.Regexp(t, "multiStatements=true", dsn, "dsn matches expected") {
+	if !assert.Regexp(t, "multiStatements=true", dsn, "dsn matches expected multiStatements") {
+		return
+	}
+	if !assert.Regexp(t, "maxAllowedPacket=0", dsn, "dsn matches expected maxAllowedPacket") {
 		return
 	}
 }
