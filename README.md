@@ -3,20 +3,22 @@ test-mysqld
 
 Create real MySQL server instance for testing
 
-[![Build Status](https://travis-ci.org/lestrrat-go/test-mysqld.png?branch=master)](https://travis-ci.org/lestrrat-go/test-mysqld)
+Forked form lestrrat-go. Added server and driver support for max_allowed_packet.
 
-[![GoDoc](https://godoc.org/github.com/lestrrat-go/test-mysqld?status.svg)](https://godoc.org/github.com/lestrrat-go/test-mysqld)
+[![Build Status](https://travis-ci.org/jeffdoubleyou/test-mysqld.png?branch=master)](https://travis-ci.org/jeffdoubleyou/test-mysqld)
+
+[![GoDoc](https://godoc.org/github.com/jeffdoubleyou/test-mysqld?status.svg)](https://godoc.org/github.com/jeffdoubleyou/test-mysqld)
 
 # DESCRIPTION
 
-By default importing `github.com/lestrrat-go/test-mysqld` will import package
+By default importing `github.com/jeffdoubleyou/test-mysqld` will import package
 `mysqltest`
 
 ```go
 import (
     "database/sql"
     "log"
-    "github.com/lestrrat-go/test-mysqld"
+    "github.com/jeffdoubleyou/test-mysqld"
 )
 
 mysqld, err := mysqltest.NewMysqld(nil)
@@ -43,8 +45,9 @@ field on the struct:
 config := mysqltest.NewConfig()
 config.SkipNetworking = false
 config.Port = 13306
+config.MaxAllowedPacket = 128M
 
-// Starts mysqld listening on port 13306
+// Starts mysqld listening on port 13306 with max_allowed_packet=128M
 mysqld, _ := mysqltest.NewMysqld(config)
 ```
 
